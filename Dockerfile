@@ -3,8 +3,9 @@ FROM python:3.10
 ARG UPSTREAM_VERSION
 ARG MAXMIND_LICENSE_KEY
 
-RUN wget https://github.com/kelseyhightower/confd/releases/download/v0.16.0/confd-0.16.0-linux-amd64 \
-  && mv confd-0.16.0-linux-amd64 /usr/bin/confd \
+RUN arch=$(dpkg --print-architecture) \
+  && wget https://github.com/kelseyhightower/confd/releases/download/v0.16.0/confd-0.16.0-linux-$arch \
+  && mv confd-0.16.0-linux-$arch /usr/bin/confd \
   && chmod +x /usr/bin/confd
 
 RUN pip install gunicorn \
