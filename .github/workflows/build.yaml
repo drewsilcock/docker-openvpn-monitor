@@ -30,4 +30,6 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/openvpn-monitor:latest
-          build-args: UPSTREAM_VERSION=1.1.4,MAXMIND_LICENSE_KEY=${{ secrets.MAXMIND_LICENSE_KEY }}
+          build-args: |
+            UPSTREAM_VERSION=1.1.4
+            MAXMIND_LICENSE_KEY=${{ secrets.MAXMIND_LICENSE_KEY }}
